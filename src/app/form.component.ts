@@ -15,7 +15,7 @@ import { NestedCSSProperties } from 'typestyle/lib/types';
   `,
 })
 export class FormComponent {
-  @Input() color = "white";
+  @Input() color = 'white';
   @Input() maxlength = 140;
   @Output() submit = new EventEmitter;
   @ViewChild('forMyWall') forMyWall: ElementRef;

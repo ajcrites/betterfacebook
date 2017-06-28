@@ -3,17 +3,15 @@ import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { style } from 'typestyle';
 import { NestedCSSProperties } from 'typestyle/lib/types';
 
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
 import { animations } from './app.component.animations';
 
 import { FormComponent } from './form.component';
-import { Post, WallService } from './wall.service';
+import { WallService } from './wall.service';
 
 @Component({
   animations,
-  selector: 'app-root',
   template: `
     <div [class]="backgroundCss"></div>
     <h1 [class]="headerCss">
