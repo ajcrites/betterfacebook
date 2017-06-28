@@ -6,10 +6,20 @@ import { Component } from '@angular/core';
     <h1>
       Welcome to {{title}}!!
     </h1>
-    <router-outlet></router-outlet>
+
+    <bf-form [color]="'yellow'" maxlength="3" (submit)="addItem($event)"></bf-form>
+
+    <ul *ngIf="items.length">
+      <li *ngFor="let item of items">{{item}}</li>
+    </ul>
   `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Better Facebook';
+  items = [];
+
+  addItem(value: string) {
+    this.items.push(value);
+  }
 }
