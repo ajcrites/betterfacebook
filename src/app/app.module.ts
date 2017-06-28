@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormComponent } from './form.component';
+import { WallService } from './wall.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { FormComponent } from './form.component';
     FormsModule,
     HttpModule,
   ],
-  providers: [],
+  providers: [WallService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
