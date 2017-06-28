@@ -6,9 +6,10 @@ import { NestedCSSProperties } from 'typestyle/lib/types';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
+import { animations } from './app.component.animations';
+
 import { FormComponent } from './form.component';
 import { Post, WallService } from './wall.service';
-import { animations } from './app.component.animations';
 
 @Component({
   animations,
@@ -35,7 +36,9 @@ import { animations } from './app.component.animations';
     </div>
 
     <ul *ngIf="items.length" [class]="wallCss">
-      <li style="overflow: hidden;" [@appear] *ngFor="let item of items">{{item.text}}</li>
+      <li [@appear] *ngFor="let item of items" style="overflow: hidden;">
+        <bf-post [item]="item" (deleteItem)="deleteItem($event)"></bf-post>
+      </li>
     </ul>
   `,
 })
@@ -93,9 +96,9 @@ export class AppComponent implements OnInit {
 
   constructor(private wall: WallService) { }
 
-  async addItem(value) {
-    await this.wall.addItem(value);
-    this.items.push({text: value});
+  async addItem(text) {
+    const id = await this.wall.addItem(text);
+    this.items.push({ id, text });
   }
 
   addAllItems() {
@@ -104,6 +107,14 @@ export class AppComponent implements OnInit {
 
   clear() {
     this.forms.forEach(form => form.clear());
+  }
+
+  deleteItem(id) {
+    const idx = this.items.findIndex(item => id === item.id);
+    this.items = [
+      ...this.items.slice(0, idx),
+      ...this.items.slice(idx + 1),
+    ];
   }
 
   ngOnInit() {

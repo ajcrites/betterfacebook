@@ -20,6 +20,8 @@ export class WallService {
   }
 
   addItem(text) {
-    return this.http.post('http://localhost:3000/wall', {text}).toPromise();
+    return this.http.post('http://localhost:3000/wall', {text})
+      .map(response => response.json().id)
+      .toPromise();
   }
 }

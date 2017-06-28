@@ -8,11 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormComponent } from './form.component';
 import { WallService } from './wall.service';
+import { PostComponent } from './post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,
