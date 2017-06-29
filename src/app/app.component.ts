@@ -12,6 +12,7 @@ import { WallService } from './wall.service';
 
 @Component({
   animations,
+  selector: 'app-root',
   template: `
     <div [class]="backgroundCss"></div>
     <h1 [class]="headerCss">
